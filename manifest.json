@@ -1,0 +1,25 @@
+{
+  "name": "Amazon Reviews Summarizer",
+  "description": "Chrome extension to summarize Amazon product review using topic analysis and sentiment analysis.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/a_plus.png",
+      "32": "/images/a_plus.png",
+      "48": "/images/a_plus.png",
+      "128": "/images/a_plus.png"
+    }
+  },
+  "icons": {
+    "16": "/images/a_plus.png",
+    "32": "/images/a_plus.png",
+    "48": "/images/a_plus.png",
+    "128": "/images/a_plus.png"
+  }
+}
