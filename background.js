@@ -7,3 +7,11 @@ chrome.runtime.onInstalled.addListener(() => {
             console.log(`[INFO][background.js] tags for this web page now set to ${review_tags}`);
         });
 });
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        let url = request.url;
+        console.log(url);
+        sendResponse({status: "Got url in the backend"});
+    }
+);
