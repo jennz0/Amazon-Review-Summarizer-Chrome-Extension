@@ -26,3 +26,10 @@ chrome.storage.sync.get({ tags: [] }, function(data) {
         tags_container.appendChild(row_container);
     }
 });
+
+chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
+
+    chrome.runtime.sendMessage({url:tabs[0].url}, function(response) {
+        console.log(response.status);
+    });
+});
