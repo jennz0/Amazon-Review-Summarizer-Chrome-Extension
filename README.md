@@ -5,6 +5,8 @@ Jiaqi Cao, Yuxin Wang, Naifu Zheng, Yige Feng
 
 ## Amazon Review Summarizer Installation Guide
 
+* On the src foler, run app.py on the terminal.
+
 * Go to chrome://extensions/, turn on `Developer mode` on the top right corner, click `Load unpacked` on the top left corner, select the folder where the code live in i.e. this folder, now you should be able to see the extension.
 <img src="/images/extension.png" width="50%"/>
 
