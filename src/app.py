@@ -9,16 +9,13 @@ cors = CORS(app)
 def get_url():
     data = request.get_json()
 
-    if not request.get_json():
-        return jsonify({'status' : "Flask didn't get url"})
+    if not data:
+        return jsonify({'success' : False, 'status' : "Flask didn't get url"})
 
-    url = request.get_json()['page_url']
-    print("Page url:", url)
-    print(data)
-
+    url = data['page_url']
     # TODO: scape and process the url 
 
-    return jsonify({'status' : "Flask got url"})
+    return jsonify({'success' : True, 'status' : "Flask got url"})
 
 if __name__ == "__main__":
     print("*" * 20 + "Starting Flask" + "*"*20)
