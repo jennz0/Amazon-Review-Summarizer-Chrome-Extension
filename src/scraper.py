@@ -19,7 +19,7 @@ def get_js_soup(url,driver):
 #tidies extracted text 
 def process_review(review):
     review = review.encode('ascii',errors='ignore').decode('utf-8')       #removes non-ascii characters
-    review = re.sub('\s+',' ',review)       #repalces repeated whitespace characters with single space
+    review = re.sub(r'\s+',' ',review)       #repalces repeated whitespace characters with single space
     return review
 
 ''' More tidying
@@ -71,5 +71,5 @@ def scrape_reviews(product_links):
 # reviews_file = 'reviews.txt'
 # write_lst(review_urls,review_urls_file)
 # write_lst(reviews,reviews_file)
-product_links = ['https://www.amazon.com/dp/B08D3HTX73/ref=va_live_carousel?pf_rd_r=57JWXK5JV020YE9489VC&pf_rd_p=901a2ab9-88dd-4bc6-8be7-3fa87a0aac5d&pf_rd_m=ATVPDKIKX0DER&pf_rd_t=HighVelocityEvent&pf_rd_i=cybermonday_1_desktop&pf_rd_s=slot-4&asc_contentid=amzn1.amazonlive.broadcast.f7c31ea6-0120-4fad-93bd-941fea68348f&pd_rd_i=B08D3HTX73&th=1']
-print(scrape_reviews(product_links)[0:4])
+# product_links = ['https://www.amazon.com/fire-tv-stick-with-3rd-gen-alexa-voice-remote/dp/B08C1W5N87?ref=dlx_epicd_gd_dcl_img_0_8e3adf40_dt_sl5_4d']
+# print(scrape_reviews(product_links))

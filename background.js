@@ -11,7 +11,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         let page_url = request.url
-        console.log(typeof page_url)
+        
         fetch("http://127.0.0.1:5000/get_url", {
             method : 'POST',
             mode : 'cors',
