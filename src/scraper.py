@@ -2,6 +2,10 @@ from bs4 import BeautifulSoup
 from selenium import webdriver 
 from selenium.webdriver.chrome.options import Options
 import re 
+import spacy
+from gensim.summarization import keywords
+from rake_nltk import Rake
+import yake
 import urllib
 import time
 
@@ -65,7 +69,37 @@ def scrape_reviews(product_links):
             review_urls.append(review_url.strip())
             reviews.append(review)
     driver.close()
+    language = "en"
+    max_ngram_size = 3
+    deduplication_threshold = 0.9
+    numOfKeywords = 20
+    custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
+    keywords = custom_kw_extractor.extract_keywords(review)
+    print(keywords)
     return reviews
+
+def extract_keywords_spacy(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    return doc.ents
+
+def extract_keywords_gensim(text):
+    return keywords(text)
+
+def extract_keywords_rake(text):
+    rake_nltk_var = Rake()
+    rake_nltk_var.extract_keywords_from_text(text)
+    keyword_extracted = rake_nltk_var.get_ranked_phrases()
+    return keyword_extracted
+
+def extract_keywords_yake(text):
+    language = "en"
+    max_ngram_size = 3
+    deduplication_threshold = 0.9
+    numOfKeywords = 20
+    custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
+    keywords = custom_kw_extractor.extract_keywords(text)
+    return keywords
 
 # review_urls_file = 'review_urls.txt'
 # reviews_file = 'reviews.txt'
