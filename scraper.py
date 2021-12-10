@@ -45,28 +45,4 @@ def scrape_product_page(fac_url,driver):
         review = process_review(profile_sec.get_text(separator=' '))
 
     return review_url,review
-product_links = ['https://www.amazon.com/dp/B08D3HTX73/ref=va_live_carousel?pf_rd_r=57JWXK5JV020YE9489VC&pf_rd_p=901a2ab9-88dd-4bc6-8be7-3fa87a0aac5d&pf_rd_m=ATVPDKIKX0DER&pf_rd_t=HighVelocityEvent&pf_rd_i=cybermonday_1_desktop&pf_rd_s=slot-4&asc_contentid=amzn1.amazonlive.broadcast.f7c31ea6-0120-4fad-93bd-941fea68348f&pd_rd_i=B08D3HTX73&th=1']
-#Scrape homepages of all urls
-review_urls, reviews = [],[]
-tot_urls = len(product_links)
-for i,link in enumerate(product_links):
-    if i > 6:
-        break
-    print ('-'*20,'Scraping Reviews {}/{}'.format(i+1,tot_urls),'-'*20)
-    review_url,review = scrape_product_page(link,driver)
-    if review.strip()!= '' and review_url.strip()!='':
-        review_urls.append(review_url.strip())
-        reviews.append(review)
-driver.close()
 
-def write_lst(lst,file_):
-    with open(file_,'w') as f:
-        for l in lst:
-            f.write(l)
-            f.write('\n')
-
-# review_urls_file = 'review_urls.txt'
-# reviews_file = 'reviews.txt'
-# write_lst(review_urls,review_urls_file)
-# write_lst(reviews,reviews_file)
-print(reviews[0:4])
