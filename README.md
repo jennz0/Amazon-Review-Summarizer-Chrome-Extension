@@ -9,7 +9,8 @@ Please refer to [Chrome extension architecture overview](https://developer.chrom
 * `popup.html` and ``popup.js``  
 * `background.js`
 ### Backend files
-* `src/app.py`
+Backend server for the chrome extension that's built with [Flask](https://flask.palletsprojects.com/en/2.0.x/), where the reviews in the product page is analyzed and summary tags are generated.
+* `src/app.py` hosts the Flask app that listens for http request from the extension sending the url of the product page, calls backend programs that scrape the page, process the review, and extract keywords, and sends the result back to the extension.
 * `src/scraper.py`
 
 ## Installation Guide
@@ -31,4 +32,7 @@ Please refer to [Chrome extension architecture overview](https://developer.chrom
 <p align="center"><img src="/images/extension_demo.png" width="40%"/><p>
 
 ## Authors:
-Jiaqi Cao, Yuxin Wang, Naifu Zheng, Yige Feng
+* Jiaqi Cao: 
+* Naifu Zheng: 
+* Yige Feng:
+* Yuxin Wang: 
