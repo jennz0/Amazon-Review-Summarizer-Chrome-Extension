@@ -11,18 +11,18 @@ def get_url():
     data = request.get_json()
 
     if not data:
-        return jsonify({'success' : False, 'status' : "Flask didn't get the url."})
+        return jsonify({'success' : False, 'status' : "Flask didn't get the url.", 'tags':["Something", "went", "wrong"]})
 
     url = data['page_url']
     print("The received url is", url)
-    if "amazon" not in url:
-        return jsonify({'success' : False, 'status' : "The url is not an amazon product page."})
 
-    reviews = scraper([url])
-    print(reviews)
-    # TODO:  process the reviews 
+    if "amazon" not in url:
+        return jsonify({'success' : False, 'status' : "The url is not an amazon product page.",  'tags': ["Oops!", "Please", "go", "to", "an", "Amazon", "product", "page"]})
+
+    #reviews = scraper([url])
+    #print(reviews)
     
-    return jsonify({'success' : True, 'status' : "Flask got the url."})
+    return jsonify({'success' : True, 'status' : "Flask got the url.",  'tags': ["Not", "implemented", "yet"]})
 
 if __name__ == "__main__":
     print("*" * 20 + "Starting Flask" + "*"*20)
