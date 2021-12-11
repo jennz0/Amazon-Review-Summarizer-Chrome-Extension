@@ -8,9 +8,10 @@ chrome.runtime.onInstalled.addListener(() => {
         });
 });
 
+// Exchange data with Flask
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        let page_url = request.url
+        let page_url = request.url;
         
         fetch("http://127.0.0.1:5000/get_url", {
             method : 'POST',

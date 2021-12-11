@@ -100,7 +100,7 @@ def extract_keywords_yake(text):
     custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
     keywords = custom_kw_extractor.extract_keywords(text)
     return keywords
-
+ 
 # review_urls_file = 'review_urls.txt'
 # reviews_file = 'reviews.txt'
 # write_lst(review_urls,review_urls_file)
