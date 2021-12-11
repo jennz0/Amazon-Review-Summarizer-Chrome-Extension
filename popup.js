@@ -1,8 +1,16 @@
 var tags_container = document.getElementById("tags");
 
-chrome.storage.sync.get({ tags: [] }, function(data) {
-    const tags = data.tags;
-    console.log(`[INFO][popup.js] adding tags to popup: ${tags}`);
+chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+
+    chrome.runtime.sendMessage({url:tabs[0].url}, function(response) {
+        console.log(response.status);
+    });
+});
+
+chrome.storage.onChanged.addListener( function(data, namespaces) {
+
+    const tags = data.tags.newValue;
+    console.log(`[INFO][popup.js] changing tags in popup: ${tags}`);
 
     var row_container = document.createElement("li");
     const row_container_class = "list-group-item d-inline-flex p-1 border-0";
@@ -24,12 +32,6 @@ chrome.storage.sync.get({ tags: [] }, function(data) {
     }
     if (count != 0) {
         tags_container.appendChild(row_container);
-    }
+    } 
 });
 
-chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
-
-    chrome.runtime.sendMessage({url:tabs[0].url}, function(response) {
-        console.log(response.status);
-    });
-});
