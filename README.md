@@ -32,7 +32,7 @@ Backend server for the chrome extension that's built with [Flask](https://flask.
 <p align="center"><img src="/images/extension_demo.png" width="40%"/><p>
 
 ## Authors:
-* Jiaqi Cao: Created the backend server app, and wrote requests in `popup.js`, `background.js` and `app.py` that transfer data between backend and frontend. 
+* Jiaqi Cao: Created the backend server app, built functions in 'popup.js' that sends the page's url to backend and receives tags from `background.js`, and wrote http requests in `background.js` and `app.py` that transfer data between backend and frontend. 
 * Naifu Zheng: Modified the scraper function used in MP2 to scrape the target Amazon product pages, built the scraped data cleaning module, abd incorporated TF-IDF weighting in text summarization.
 * Yige Feng: Implemented the frontend of the chrome extension, including setting up the manifest, building the popup, and writing background.js which provide an interface to connect to the backend.
 * Yuxin Wang: 
