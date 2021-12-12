@@ -34,6 +34,6 @@ Backend server for the chrome extension that's built with [Flask](https://flask.
 
 ## Authors:
 * Jiaqi Cao: 
-* Naifu Zheng: 
+* Naifu Zheng: Modified the scraper function used in MP2 to scrape the target Amazon product pages. Built the scraped data cleaning module. Incorporated TF-IDF weighting in text summarization.
 * Yige Feng:
 * Yuxin Wang: 
