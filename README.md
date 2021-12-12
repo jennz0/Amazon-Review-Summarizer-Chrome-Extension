@@ -21,14 +21,14 @@ Backend server for the chrome extension that's built with [Flask](https://flask.
 ### Set up the Repo
 * Clone the repository and run `pip install -r src/requirements.txt`
 
-* Under `src` directory, run `python3 app.py`
+* Run `python3 src/app.py`
 
 * Go to Chrome extension management (chrome://extensions/), turn on `Developer mode` on the top right corner, click `Load unpacked` on the top left corner, select the folder where the code live in i.e. this folder, now you should be able to see the extension.
 <p align="center"><img src="/images/extension.png" width="40%"/><p>
 
 * Next click on the extension button on the top right corner of the Chrome app (looks like a piece of jigsaw puzzle), and then pin the A+ extension.
  
-* You're good to go! Open an Amazon product page and click on the A+ icon, you should now be able to see a summary of the product.
+* You're good to go! Open an Amazon product page and click on the A+ icon, you should now be able to see a summary of the product. Note that you might need to wait for sometime for the text processing to complete.
 <p align="center"><img src="/images/extension_demo.png" width="40%"/><p>
 
 ## Authors:
