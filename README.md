@@ -1,6 +1,9 @@
 # Amazon Review Summarizer Chrome Extension Docummentation
 There are summaries about the product reviews on Amazon, but only for the products with more than hundreds of reviews. Also, the product review summaries oftentime contains some inaccuracies, including words that are not desciptions of the product, e.g. "even though", "make sure", or redundant summaries such as “easy to set” and “easy to set up”. This extension serves as a improvement for generating summary tags that solves these problems.
 
+## Demo Video
+https://uofi.box.com/s/toia5s3r0xri31s3hnx7c2c62g531oyj
+
 ## Description
 ### Extension files
 Please refer to [Chrome extension architecture overview](https://developer.chrome.com/docs/extensions/mv3/architecture-overview/) for more details.
