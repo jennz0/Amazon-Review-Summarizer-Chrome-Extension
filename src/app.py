@@ -21,8 +21,8 @@ def get_url():
 
     #reviews = scraper([url])
     #print(reviews)
-    
-    return jsonify({'success' : True, 'status' : "Flask got the url.",  'tags': ["Not", "implemented", "yet"]})
+    tag_list = scraper([url])
+    return jsonify({'success' : True, 'status' : "Flask got the url.",  'tags': tag_list})
 
 if __name__ == "__main__":
     print("*" * 20 + "Starting Flask" + "*"*20)

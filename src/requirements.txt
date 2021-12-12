@@ -2,3 +2,6 @@ Flask-CORS == 3.0.10
 Flask
 beautifulsoup4
 selenium
+nltk
+rake_nltk
+yake

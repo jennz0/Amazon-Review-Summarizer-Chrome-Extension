@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import re 
 import spacy
-from gensim.summarization import keywords
+# from gensim.summarization import keywords
 from rake_nltk import Rake
 import yake
 import urllib
@@ -68,23 +68,40 @@ def scrape_reviews(product_links):
         if review.strip()!= '' and review_url.strip()!='':
             review_urls.append(review_url.strip())
             reviews.append(review)
-    driver.close()
+    #driver.close()
+
+    start_pattern = r'(Reviews with images(.*?)Verified Purchase)'
+    pattern1 = r'(Reviewed in(.*?)Verified Purchase)'
+    pattern2 = r'(Read more (.*?)out of 5 stars)'
+    end_pattern = r'Read more (.*?)all reviews'
+    end_pattern2 = r'people found(.*?)all reviews'
+    scraped_review = reviews[0]
+    scraped_review = re.sub(start_pattern, ' ', scraped_review)
+    while re.findall(r'Verified Purchase',scraped_review):
+        scraped_review = re.sub(pattern1, ' ', scraped_review)
+    while re.findall(pattern2,scraped_review):
+        scraped_review = re.sub(pattern2, ' ', scraped_review)
+    scraped_review = re.sub(end_pattern, ' ', scraped_review)
+    scraped_review = re.sub(end_pattern2, ' ', scraped_review)
+    scraped_review = scraped_review.replace("Your browser does not support HTML5 video.",'')
+    scraped_review = scraped_review.replace("Video Player is loading.",'')
+
     language = "en"
     max_ngram_size = 3
     deduplication_threshold = 0.9
     numOfKeywords = 20
     custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
-    keywords = custom_kw_extractor.extract_keywords(review)
-    print(keywords)
-    return reviews
+    keywords = custom_kw_extractor.extract_keywords(scraped_review)
+    toreturn = []
+    for i in range(len(keywords)):
+        toreturn.append(keywords[i][0])
+    return toreturn
 
 def extract_keywords_spacy(text):
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     return doc.ents
 
-def extract_keywords_gensim(text):
-    return keywords(text)
 
 def extract_keywords_rake(text):
     rake_nltk_var = Rake()
@@ -101,9 +118,5 @@ def extract_keywords_yake(text):
     keywords = custom_kw_extractor.extract_keywords(text)
     return keywords
  
-# review_urls_file = 'review_urls.txt'
-# reviews_file = 'reviews.txt'
-# write_lst(review_urls,review_urls_file)
-# write_lst(reviews,reviews_file)
-# product_links = ['https://www.amazon.com/fire-tv-stick-with-3rd-gen-alexa-voice-remote/dp/B08C1W5N87?ref=dlx_epicd_gd_dcl_img_0_8e3adf40_dt_sl5_4d']
-# print(scrape_reviews(product_links))
+product_links = ['https://www.amazon.com/fire-tv-stick-with-3rd-gen-alexa-voice-remote/dp/B08C1W5N87?ref=dlx_epicd_gd_dcl_img_0_8e3adf40_dt_sl5_4d']
+#print(scrape_reviews(product_links))
