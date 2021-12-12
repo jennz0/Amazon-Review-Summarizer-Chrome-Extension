@@ -1,18 +1,17 @@
 # Amazon Review Summarizer Chrome Extension Docummentation
 There are summaries about the product reviews on Amazon, but only for the products with more than hundreds of reviews. Also, the product review summaries oftentime contains some inaccuracies, including words that are not desciptions of the product, e.g. "even though", "make sure", or redundant summaries such as “easy to set” and “easy to set up”. This extension serves as a improvement for generating summary tags that solves these problems.
 
-``` 1) An overview of the function of the code (i.e., what it does and what it can be used for). 2) Documentation of how the software is implemented with sufficient detail so that others can have a basic understanding of your code for future extension or any further improvement.  4) Brief description of contribution of each team member in case of a multi-person team. ```
 ## Description
 ### Extension files
 Please refer to [Chrome extension architecture overview](https://developer.chrome.com/docs/extensions/mv3/architecture-overview/) for more details.
 * `manifest.json` specifies the configuration of the Chrome extension.
 * `popup.html` and ``popup.js`` contains the frontend logic including a popup which will show the user review summaries of a Amazon product.
-* `background.js` connects the backend to the frontend.
+* `background.js` connects the backend to the frontend, makes and receives requests with backend programs.
 ### Backend files
 Backend server for the chrome extension that's built with [Flask](https://flask.palletsprojects.com/en/2.0.x/), where the reviews in the product page is analyzed and summary tags are generated.
 * `src/app.py` hosts the Flask app that listens for http request from the extension sending the url of the product page, calls backend programs that scrape the page, process the review, and extract keywords, and sends the result back to the extension.
-* `src/scraper.py` scrapes the product reviews in the target Amazon website using the URL sent from Flask. Cleans the scraped data using regular expressions, pruning undesired sentences (i.e. "Review with images","123 people found the review helpful"). Then uses keyword extraction module to summarize the reviews and get the topic keywords.
-* `src/drivercode.py` Uses the same data cleaning functions mentioned above to preprocess the scraped data. Summarize the reviews using TF-IDF weighting.
+* `src/scraper.py` scrapes the product reviews in the target Amazon website using the URL sent from Flask, cleans the scraped data using regular expressions, pruning undesired sentences (i.e. "Review with images","123 people found the review helpful"), and then uses keyword extraction module to summarize the reviews and get the topic keywords.
+* `src/drivercode.py` uses the same data cleaning functions mentioned above to preprocess the scraped data, and summarizes the reviews using TF-IDF weighting.
 
 ## Installation Guide
 ### Software Requirements
@@ -33,7 +32,7 @@ Backend server for the chrome extension that's built with [Flask](https://flask.
 <p align="center"><img src="/images/extension_demo.png" width="40%"/><p>
 
 ## Authors:
-* Jiaqi Cao: 
-* Naifu Zheng: Modified the scraper function used in MP2 to scrape the target Amazon product pages. Built the scraped data cleaning module. Incorporated TF-IDF weighting in text summarization.
+* Jiaqi Cao: Created the backend server app, and wrote requests in `popup.js`, `background.js` and `app.py` that transfer data between backend and frontend. 
+* Naifu Zheng: Modified the scraper function used in MP2 to scrape the target Amazon product pages, built the scraped data cleaning module, abd incorporated TF-IDF weighting in text summarization.
 * Yige Feng:
 * Yuxin Wang: 
