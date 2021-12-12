@@ -11,7 +11,8 @@ Please refer to [Chrome extension architecture overview](https://developer.chrom
 ### Backend files
 Backend server for the chrome extension that's built with [Flask](https://flask.palletsprojects.com/en/2.0.x/), where the reviews in the product page is analyzed and summary tags are generated.
 * `src/app.py` hosts the Flask app that listens for http request from the extension sending the url of the product page, calls backend programs that scrape the page, process the review, and extract keywords, and sends the result back to the extension.
-* `src/scraper.py`
+* `src/scraper.py` scrapes the product reviews in the target Amazon website using the URL sent from Flask. Cleans the scraped data using regular expressions, pruning undesired sentences (i.e. "Review with images","123 people found the review helpful"). Then uses keyword extraction module to summarize the reviews and get the topic keywords.
+* `src/drivercode.py` Uses the same data cleaning functions mentioned above to preprocess the scraped data. Summarize the reviews using TF-IDF weighting.
 
 ## Installation Guide
 ### Software Requirements
