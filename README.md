@@ -5,9 +5,9 @@ There are summaries about the product reviews on Amazon, but only for the produc
 ## Description
 ### Extension files
 Please refer to [Chrome extension architecture overview](https://developer.chrome.com/docs/extensions/mv3/architecture-overview/) for more details.
-* `manifest.json`
-* `popup.html` and ``popup.js``  
-* `background.js`
+* `manifest.json` specifies the configuration of the Chrome extension.
+* `popup.html` and ``popup.js`` contains the frontend logic including a popup which will show the user review summaries of a Amazon product.
+* `background.js` connects the backend to the frontend.
 ### Backend files
 Backend server for the chrome extension that's built with [Flask](https://flask.palletsprojects.com/en/2.0.x/), where the reviews in the product page is analyzed and summary tags are generated.
 * `src/app.py` hosts the Flask app that listens for http request from the extension sending the url of the product page, calls backend programs that scrape the page, process the review, and extract keywords, and sends the result back to the extension.
