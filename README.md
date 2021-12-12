@@ -10,7 +10,7 @@ Please refer to [Chrome extension architecture overview](https://developer.chrom
 ### Backend files
 Backend server for the chrome extension that's built with [Flask](https://flask.palletsprojects.com/en/2.0.x/), where the reviews in the product page is analyzed and summary tags are generated.
 * `src/app.py` hosts the Flask app that listens for http request from the extension sending the url of the product page, calls backend programs that scrape the page, process the review, and extract keywords, and sends the result back to the extension.
-* `src/scraper.py` scrapes the product reviews in the target Amazon website using the URL sent from Flask, cleans the scraped data using regular expressions, pruning undesired sentences (i.e. "Review with images","123 people found the review helpful"), and then uses keyword extraction module to summarize the reviews and get the topic keywords.
+* `src/scraper.py` scrapes the product reviews in the target Amazon website using the URL sent from Flask, cleans the scraped data using regular expressions, pruning undesired sentences (i.e. "Review with images","123 people found the review helpful"), and then uses keyword extraction module to summarize the reviews and selects the most important keywords or phrases using the text statistical features method from the reviews.
 * `src/drivercode.py` uses the same data cleaning functions mentioned above to preprocess the scraped data, and summarizes the reviews using TF-IDF weighting.
 
 ## Installation Guide
@@ -35,4 +35,4 @@ Backend server for the chrome extension that's built with [Flask](https://flask.
 * Jiaqi Cao: Created the backend server app, built functions in 'popup.js' that sends the page's url to backend and receives tags from `background.js`, and wrote http requests in `background.js` and `app.py` that transfer data between backend and frontend. 
 * Naifu Zheng: Modified the scraper function used in MP2 to scrape the target Amazon product pages, built the scraped data cleaning module, abd incorporated TF-IDF weighting in text summarization.
 * Yige Feng: Implemented the frontend of the chrome extension, including setting up the `manifest.json`, building `popup.js` and `popup.html`, and building `background.js` which provide an interface to connect to the backend.
-* Yuxin Wang: 
+* Yuxin Wang: Implemented the backend keywords extraction functions using keyword extraction modules such as SpaCy, YAKE, and Rake-NLTK to summarize the reviews and selects the most important keywords or phrases using the text statistical features method from the reviews.
