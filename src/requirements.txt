@@ -5,3 +5,4 @@ selenium
 nltk
 rake_nltk
 yake
+spacy
