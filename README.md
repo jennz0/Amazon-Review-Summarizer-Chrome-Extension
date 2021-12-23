@@ -1,9 +1,6 @@
 # Amazon Review Summarizer Chrome Extension Docummentation
 There are summaries about the product reviews on Amazon, but only for the products with more than hundreds of reviews. Also, the product review summaries oftentime contains some inaccuracies, including words that are not desciptions of the product, e.g. "even though", "make sure", or redundant summaries such as “easy to set” and “easy to set up”. This extension serves as a improvement for generating summary tags that solves these problems.
 
-## Demo Video
-https://uofi.box.com/s/toia5s3r0xri31s3hnx7c2c62g531oyj
-
 ## Description
 ### Extension files
 Please refer to [Chrome extension architecture overview](https://developer.chrome.com/docs/extensions/mv3/architecture-overview/) for more details.
@@ -33,7 +30,10 @@ Backend server for the chrome extension that's built with [Flask](https://flask.
  
 * You're good to go! Open an Amazon product page and click on the A+ icon, you should now be able to see a summary of the product. Note that you might need to wait for sometime for the text processing to complete.
 <p align="center"><img src="/images/extension_demo.png" width="40%"/><p>
-
+ 
+## Demo Video
+https://uofi.box.com/s/toia5s3r0xri31s3hnx7c2c62g531oyj
+ 
 ## Authors:
 * Jiaqi Cao: Created the backend server app, built functions in 'popup.js' that sends the page's url to backend and receives tags from `background.js`, and wrote http requests in `background.js` and `app.py` that transfer data between backend and frontend. 
 * Naifu Zheng: Modified the scraper function used in MP2 to scrape the target Amazon product pages, built the scraped data cleaning module, abd incorporated TF-IDF weighting in text summarization.
